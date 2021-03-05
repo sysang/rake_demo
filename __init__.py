@@ -7,6 +7,8 @@ import yake
 
 from rake_nltk import Rake
 
+from keybert import KeyBERT
+
 
 def create_app(test_config=None):
     # create and configure the app
@@ -33,6 +35,9 @@ def create_app(test_config=None):
     @app.route('/index')
     def hello():
         return '<ul>\
+                <li>\
+                    <a href="/keybertinput">keyBERT algorithm</a>\
+                </li>\
                 <li>\
                     <a href="/yakeinput">Yake algorithm</a>\
                 </li>\
@@ -138,4 +143,44 @@ def create_app(test_config=None):
 
         return res_body
 
+    @app.route('/keybertinput')
+    def keybert_input():
+
+        return '<form action="/keybertoutput" method="post">\
+                    <textarea name="message" required style="width:450px; height:300px;" placeholder="Please enter content for execution..."></textarea><br><br>\
+                    <input type="radio" checked id="lang1" name="language" value="en"><label for="lang1"> English</label><br><br>\
+                    <input type="submit" value="SUBMIT">\
+                </form'
+
+    @app.route('/keybertoutput', methods=['POST'])
+    def keybert_output():
+        text = request.form['message']
+
+        model = KeyBERT('distilbert-base-nli-mean-tokens')
+        keywords = model.extract_keywords(text, keyphrase_ngram_range=(1, 3), stop_words=None)
+
+        table = '<table><tr><th>Keywords</th><th>Score</th></tr>'
+        for kw in reversed(list(keywords)):
+            table += '<tr><td>{}</td> <td>{}</td></tr>'.format(kw[0], kw[1])
+        table += '</table>'
+
+        res_body = '<div style="width:100%">\
+                        <div style="width:40%; display:inline-block; vertical-align:top; padding: 15px">\
+                            <h3 style="text-decoration: underline">\
+                                <a target="_blank" href="https://github.com/MaartenGr/KeyBERT">keyBERT Algorithm </a>\
+                            </h3>\
+                            <h4>Content</h4>\
+                            <p>\
+                                {}\
+                            </p>\
+                            <p><a href="/index" style="text-decoration: none"><< Index</a></p>\
+                        </div>\
+                        <div style="width:35%; display:inline-block; padding: 15px">\
+                            {}\
+                        </div>\
+                    </div>'.format(text, table)
+
+        return res_body
+
     return app
+
