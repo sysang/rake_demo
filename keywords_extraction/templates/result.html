@@ -1,0 +1,18 @@
+<div style="width:100%">
+    <div style="width:40%; display:inline-block; vertical-align:top; padding: 15px">
+        <h3 style="text-decoration: underline">
+            <a target="_blank" href="https://github.com/MaartenGr/KeyBERT">{{ title }} </a>
+        </h3>
+        <h4>Content</h4>
+        <p> {{ text }} </p>
+        <p><a href="/keywords_extraction" style="text-decoration: none"><< Index</a></p>
+    </div>
+    <div style="width:35%; display:inline-block; padding: 15px">
+        <table>
+            <tr><th>Keywords</th><th>Score</th></tr>
+            {% for kw in keywords%}
+            <tr><td>{{ kw[0]}}</td> <td>{{ kw[1]}}</td></tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
