@@ -1,18 +1,31 @@
-<div style="width:100%">
-    <div style="width:40%; display:inline-block; vertical-align:top; padding: 15px">
-        <h3 style="text-decoration: underline">
-            <a target="_blank" href="https://github.com/MaartenGr/KeyBERT">{{ title }} </a>
-        </h3>
-        <h4>Content</h4>
-        <p> {{ text }} </p>
-        <p><a href="/keywords_extraction" style="text-decoration: none"><< Index</a></p>
+ <!DOCTYPE html>
+<html>
+<head>
+<title>Keyword Extraction</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+    <div style="width:100%">
+        <div style="width:40%; display:inline-block; vertical-align:top; padding: 15px">
+            <h2 style="text-decoration: underline">
+                <span>{{ title }} </span>
+            </h2>
+            <p style="border: 1px solid; padding: 10px"> {{ text }} </p>
+            <p><a href="/" style="text-decoration: none"><< Index</a></p>
+        </div>
+        <div style="width:35%; display:inline-block; padding: 15px">
+            <table style="border: outset; padding: 30px;">
+                <tr>
+                    <th style="padding-bottom: 15px; text-align: left; font-size: large; width: 250px">Keywords</th>
+                    <th style="padding-bottom: 15px; text-align: left; font-size: large; width: 50">Score</th>
+                </tr>
+                {% for kw in keywords%}
+                <tr>
+                    <td style="padding-bottom: 5px">{{ kw[0]}}</td>
+                    <td><b>{{ kw[1]|round(3)}}</b></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
     </div>
-    <div style="width:35%; display:inline-block; padding: 15px">
-        <table>
-            <tr><th>Keywords</th><th>Score</th></tr>
-            {% for kw in keywords%}
-            <tr><td>{{ kw[0]}}</td> <td>{{ kw[1]}}</td></tr>
-            {% endfor %}
-        </table>
-    </div>
-</div>
+</body>

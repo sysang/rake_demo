@@ -1,6 +1,29 @@
-<form action="/{{ action }}" method="post">
+ <!DOCTYPE html>
+<html>
+<head>
+<title>Keyword Extraction</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<style>
+.btn {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+    <form action="/{{ action }}" method="post">
+        <input type="radio" id="lang2" name="language" value="nl" checked><label for="lang2"> Dutch</label><br><br>
         <textarea name="message" required style="width:450px; height:300px;" placeholder="Please enter content for execution..."></textarea><br><br>
-        <input type="radio" checked id="lang1" name="language" value="en"><label for="lang1"> English</label><br> 
-        <input type="radio" id="lang2" name="language" value="dl"><label for="lang2"> Dutch</label><br><br><br> 
-        <input type="submit" value="SUBMIT">
-</form
+        <!-- <input type="radio" id="lang1" name="language" value="en"><label for="lang1"> English</label><br> <br><br> -->
+        <input class="btn" type="submit" value="SUBMIT">
+    </form
+</body>
+</html>
