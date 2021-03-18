@@ -11,7 +11,7 @@ import spacy
 import pytextrank
 
 
-def rake_impl(text, language='dutch'):
+def rake_impl(text, language='nl'):
     languages = {'en': 'english', 'nl': 'dutch'}
     lang = languages[language]
     stop_words = stopwords.words(lang)
@@ -47,18 +47,22 @@ def yake_impl(text, language='nl'):
     return reversed(keywords)
 
 
-def keybert_impl(text, language='dutch'):
-    roberta = TransformerDocumentEmbeddings('nlptown/bert-base-multilingual-uncased-sentiment')
-    model = KeyBERT(model=roberta)
+def keybert_impl(text, language='nl'):
+    languages = {'en': 'english', 'nl': 'dutch'}
+    lang = languages[language]
 
-    stop_words = stopwords.words(language)
+    # bert = TransformerDocumentEmbeddings('bert-base-multilingual-cased')
+    bert = TransformerDocumentEmbeddings('henryk/bert-base-multilingual-cased-finetuned-dutch-squad2')
+    model = KeyBERT(model=bert)
 
-    keywords = model.extract_keywords(text, keyphrase_ngram_range=(1, 2), stop_words=stop_words, use_maxsum=False, nr_candidates=20, top_n=20)
+    stop_words = stopwords.words(lang)
+
+    keywords = model.extract_keywords(text, keyphrase_ngram_range=(1, 3), stop_words=stop_words, use_maxsum=False, nr_candidates=20, top_n=20)
 
     return keywords
 
 
-def textrank_impl(text, language='dutch'):
+def textrank_impl(text, language='nl'):
     # load a spaCy model, depending on language, scale, etc.
     nlp = spacy.load("nl_core_news_md")
 

@@ -17,10 +17,10 @@
             <table style="border: outset; padding: 30px;">
                 <tr>
                     <th style="padding-bottom: 15px; text-align: left; font-size: large; width: 250px">Keywords</th>
-                    <th style="padding-bottom: 15px; text-align: left; font-size: large; width: 50">Score</th>
+                    <th style="padding-bottom: 15px; text-align: left; font-size: large; width: 50px">Score</th>
                 </tr>
                 {% for kw in keywords%}
-                <tr>
+                <tr style="height: 35px">
                     <td style="padding-bottom: 5px">{{ kw[0]}}</td>
                     <td><b>{{ kw[1]|round(3)}}</b></td>
                 </tr>

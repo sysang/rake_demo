@@ -46,7 +46,7 @@ def create_app(test_config=None):
     @app.route('/yakeoutput', methods=['POST'])
     def yake_output():
         text = request.form['message']
-        language = request.form['language']
+        language = 'nl'
 
         keywords = algorithms.yake_impl(text, language)
 
@@ -60,7 +60,7 @@ def create_app(test_config=None):
     @app.route('/rakeoutput', methods=['POST'])
     def rake_output():
         text = request.form['message']
-        language = request.form['language']
+        language = 'nl'
 
         keywords = algorithms.rake_impl(text, language)
 
@@ -74,8 +74,9 @@ def create_app(test_config=None):
     @app.route('/keybertoutput', methods=['POST'])
     def keybert_output():
         text = request.form['message']
+        language = 'nl'
 
-        keywords = algorithms.keybert_impl(text)
+        keywords = algorithms.keybert_impl(text, language)
 
         return render_template('result.html', keywords=keywords, text=text, title='keyBERT algorithm')
 
@@ -86,10 +87,10 @@ def create_app(test_config=None):
 
     @app.route('/textrank', methods=['POST'])
     def textrank_output():
-
         text = request.form['message']
+        language = 'nl'
 
-        keywords = algorithms.textrank_impl(text)
+        keywords = algorithms.textrank_impl(text, language)
 
         return render_template('result.html', keywords=keywords, text=text, title='TextRank algorithm')
 
