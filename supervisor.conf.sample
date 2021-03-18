@@ -24,7 +24,7 @@ strip_ansi = false
 environment = KEY1="value1",KEY2="value2"
 
 [program:gunicorn]
-command=/usr/local/bin/gunicorn -b 127.0.0.1:8001 "keywords_extraction:create_app()"
+command=/usr/local/bin/gunicorn -b 127.0.0.1:8001 -t 300 "keywords_extraction:create_app()"
 directory=/workspace/upwork/martien_brouver/keywords_extraction
 user=root
 autostart=true
@@ -39,4 +39,3 @@ prompt = mysupervisor
 
 [rpcinterface:supervisor]
 supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface
-
