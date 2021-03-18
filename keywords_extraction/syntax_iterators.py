@@ -87,8 +87,8 @@ def noun_chunks(doclike: Union[Doc, Span]) -> Iterator[Span]:
 
     # Loop over the text to process each word
     for i, word in enumerate(doclike):
-        print("\n-  {}".format(str(word)))
-        print("\t{}..[{}]; (dep)[{}, {}]; (head){} (POS){}".format(word.left_edge.i, word.i, word.dep, word.dep_, word.head, word.pos_))
+        # print("\n-  {}".format(str(word)))
+        # print("\t{}..[{}]; (dep)[{}, {}]; (head){} (POS){}".format(word.left_edge.i, word.i, word.dep, word.dep_, word.head, word.pos_))
 
         # word.pos -> part of speech of token
         # pos must be one of NOUN, PRONP, or PRON
@@ -104,7 +104,7 @@ def noun_chunks(doclike: Union[Doc, Span]) -> Iterator[Span]:
         # return
         if word.dep in np_deps and word.left_edge.dep != punct:
             yield word.left_edge.i, word.i + 1, np_label
-            print("   (NP) {}".format(word))
+            # print("   (NP) {}".format(word))
 
         # or else, if check whether word's dependency is conjunct then
         # recursively catch the final head of phrase
@@ -123,15 +123,12 @@ def noun_chunks(doclike: Union[Doc, Span]) -> Iterator[Span]:
 
         elif word.dep == nmod and word.head.dep == obj and word.left_edge.dep == case:
             yield word.head.left_edge.i, word.i + 1, np_label
-            print("   (NP) {}".format(word))
 
         elif word.dep == obl:
             if word.head.dep == ccomp:
                 yield word.head.left_edge.i, word.head.i + 1, np_label
-                print("   (NP) {}".format(word))
             elif word.left_edge.dep != punct:
                 yield word.left_edge.i, word.i + 1, np_label
-                print("   (NP) {}".format(word))
 
 
     # TODO Study the use of the return left_edge, i + 1, np_label
