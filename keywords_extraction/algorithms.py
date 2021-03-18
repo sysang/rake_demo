@@ -51,8 +51,8 @@ def keybert_impl(text, language='nl'):
     languages = {'en': 'english', 'nl': 'dutch'}
     lang = languages[language]
 
-    # bert = TransformerDocumentEmbeddings('bert-base-multilingual-cased')
-    bert = TransformerDocumentEmbeddings('henryk/bert-base-multilingual-cased-finetuned-dutch-squad2')
+    # bert = TransformerDocumentEmbeddings('henryk/bert-base-multilingual-cased-finetuned-dutch-squad2')
+    bert = TransformerDocumentEmbeddings('nlptown/bert-base-multilingual-uncased-sentiment')
     model = KeyBERT(model=bert)
 
     stop_words = stopwords.words(lang)
