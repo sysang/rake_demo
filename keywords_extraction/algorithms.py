@@ -1,6 +1,6 @@
 import yake
 
-from rake_nltk import Rake
+# from rake_nltk import Rake
 
 from keybert import KeyBERT
 from flair.embeddings import TransformerDocumentEmbeddings
