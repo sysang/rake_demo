@@ -12,4 +12,11 @@
 
 ## Package Dependencies
 
-- Install flask
+- nginx installation, https://nginx.org/en/linux_packages.html#Ubuntu
+- pip install --user flask
+- pip install --user gunicorn
+- pip install --user torch==1.7.0+cpu torchvision==0.8.1+cpu torchaudio===0.7.0 -f https://download.pytorch.org/whl/torch_stable.html
+- pip install --user keybert
+-
+- pip install pytextrank
+- python -m spacy download nl_core_news_sm

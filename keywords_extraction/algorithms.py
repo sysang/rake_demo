@@ -75,3 +75,7 @@ def textrank_impl(text, language='nl'):
         keywords.append((p.text, p.rank))
 
     return keywords
+
+
+if __name__ == "__main__":
+    keybert_impl('test')
