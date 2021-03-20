@@ -44,6 +44,7 @@ def noun_chunks(doclike: Union[Doc, Span]) -> Iterator[Span]:
     labels = [
         # "oprd", # object predicate
         "nsubj", # nominal subject
+        "nsubj:pass", # nominal subject
         "dobj", # direct object
         "obj", # direct object
         "obl:agent", # oblique object:agent
@@ -61,25 +62,32 @@ def noun_chunks(doclike: Union[Doc, Span]) -> Iterator[Span]:
     # NP -> noun phrase
     # PROPN -> proper noun
     # PRON -> pronoun
+    # nmod -> nominal modifier
+    # obj -> object
+    # ccomp -> clausal complement
 
     doc = doclike.doc  # Ensure works on both Doc and Span.
     if not doc.has_annotation("DEP"):
         raise ValueError(Errors.E029)
 
     # np_deps is of kind similar to [433, 429, 416, 430, 438, 439, 3965108062993911700, 403, 404, 8206900633647566924]
-    # doc.vocal.strings : StringStore :Look up strings by 64-bit hashes. 
+    # doc.vocal.strings : StringStore :Look up strings by 64-bit hashes.
     # https://spacy.io/api/stringstore
-    # doc.vocal.strings.add : Add a string to the StringStore -> return: The string’s hash value. 
+    # doc.vocal.strings.add : Add a string to the StringStore -> return: The string’s hash value.
     np_deps = [doc.vocab.strings.add(label) for label in labels]
-    print(np_deps)
 
-    conj = doc.vocab.strings.add("conj") # a representative (hashed) number for conj
-    np_label = doc.vocab.strings.add("NP") # a representative (hashed) number for NP
+    # a representative (hashed) number for conj
+    conj = doc.vocab.strings.add("conj")
+    np_label = doc.vocab.strings.add("NP")
     punct = doc.vocab.strings.add("punct")
     nmod = doc.vocab.strings.add("nmod")
+    nsubj = doc.vocab.strings.add("nsubj")
     obj = doc.vocab.strings.add("obj")
     obl = doc.vocab.strings.add("obl")
     case = doc.vocab.strings.add("case")
+    appos = doc.vocab.strings.add("appos")
+    ROOT = doc.vocab.strings.add("ROOT")
+    det = doc.vocab.strings.add("det")
     ccomp = doc.vocab.strings.add("ccomp")
 
     # initial reasonable value, no other logic
@@ -87,8 +95,8 @@ def noun_chunks(doclike: Union[Doc, Span]) -> Iterator[Span]:
 
     # Loop over the text to process each word
     for i, word in enumerate(doclike):
-        # print("\n-  {}".format(str(word)))
-        # print("\t{}..[{}]; (dep)[{}, {}]; (head){} (POS){}".format(word.left_edge.i, word.i, word.dep, word.dep_, word.head, word.pos_))
+        print("\n-  {}".format(str(word)))
+        print("\t{}..[{}]; (dep)[{}, {}]; (head){} (POS){}".format(word.left_edge.i, word.i, word.dep, word.dep_, word.head, word.pos_))
 
         # word.pos -> part of speech of token
         # pos must be one of NOUN, PRONP, or PRON
@@ -104,31 +112,43 @@ def noun_chunks(doclike: Union[Doc, Span]) -> Iterator[Span]:
         # return
         if word.dep in np_deps and word.left_edge.dep != punct:
             yield word.left_edge.i, word.i + 1, np_label
-            # print("   (NP) {}".format(word))
+            print("   (NP1) {}".format(word))
 
         # or else, if check whether word's dependency is conjunct then
         # recursively catch the final head of phrase
         # check if head's dependency is one of syntactic type to return
-        # elif word.dep == conj:
-        #     head = word.head
+        elif word.dep == appos:
+            head = word.head
 
             # recursively set head of children
-            # while head.dep == conj and head.head.i < head.i:
-            #     head = head.head
+            while head.dep == appos and head.head.i < head.i:
+                head = head.head
 
             # If the head is an NP, and we're coordinated to it, we're an NP
-            # if head.dep in np_deps:
-                # prev_end = word.i
-                # yield word.left_edge.i, word.i + 1, np_label
+            if head.dep in np_deps:
+                yield word.left_edge.i, word.i + 1, np_label
+                print("   (NP5) {}".format(word))
+            elif head.dep == nmod:
+                yield word.head.left_edge.i, word.i + 1, np_label
+                print("   (NP6) {}".format(word))
 
-        elif word.dep == nmod and word.head.dep == obj and word.left_edge.dep == case:
+        # Process sytax for NP with PP
+        # if token is nominal modifier(nmod) and its left edge is preposition
+        # then check if its head is obj
+        elif word.dep == nmod and (word.left_edge.dep in (case, det) or word.i == word.left_edge.i) and word.head.dep in (obj, nsubj, ROOT):
             yield word.head.left_edge.i, word.i + 1, np_label
+            print("   (NP2) {} <- {}".format(word, word.head.left_edge.i))
 
+        # Process syntax for oblique object
+        # Case 1: oblique object has clausal complement(ccomp)
+        # Case 2: without ccomp
         elif word.dep == obl:
             if word.head.dep == ccomp:
-                yield word.head.left_edge.i, word.head.i + 1, np_label
+                yield word.head.left_edge.i, word.i + 1, np_label
+                print("   (NP3) {}".format(word))
             elif word.left_edge.dep != punct:
                 yield word.left_edge.i, word.i + 1, np_label
+                print("   (NP4) {}".format(word))
 
 
     # TODO Study the use of the return left_edge, i + 1, np_label
