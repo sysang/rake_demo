@@ -33,6 +33,11 @@ def create_app(test_config=None):
     def serve_favicon():
         return send_from_directory('templates', 'favicon.ico')
 
+    @app.route('/texts/<int:id>')
+    def serve_texts(id):
+        print('text{}.md'.format(id))
+        return send_from_directory('templates', 'text{}.md'.format(id))
+
     # a simple page that says hello
     @app.route('/')
     def hello():

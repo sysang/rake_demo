@@ -2,30 +2,30 @@ Dakrenovatie.
 
 
 Dakrenovatie, waarom u beter in één keer het hele dak kunt laten renoveren.  
-*[Dakrenovatie, why u better in one time the whole roof can have renovate.]*
-*(Roof renovation, why it's better to have the entire roof renovated at once.)*
+`Dakrenovatie, why u better in one time the whole roof can have renovate.`  
+> `Roof renovation, why it's better to have the entire roof renovated at once.*
 
-Een dak gaat lang mee, maar afhankelijk van het type dak, de omstandigheden,
-*[A roof go long with, but depending of the type roof, the circumstance]*
-het onderhoud en de soort dakbedekking kan het soms nodig zijn om het dak te renoveren.
-*[the maintenace adn the kind covering can the sometimes necessary be for the roof to renovate.]*
+Een dak gaat lang mee, maar afhankelijk van het type dak, de omstandigheden,  
+`A roof go long with, but depending of the type roof, the circumstance`  
+het onderhoud en de soort dakbedekking kan het soms nodig zijn om het dak te renoveren.  
+`the maintenace and the kind covering can the sometimes necessary be for the roof to renovate.`  
 Daarnaast kan een renovatie gunstig zijn voor de WOZ-waarde, wanneer u bijvoorbeeld plannen heeft om uw huis te verkopen.  
-*[Furthermore can a renovation beneficial be for the WOZ-value, when u for.instance have for your house to sell.]*
-> *(A roof lasts a long time, but depending on the type of roof, the conditions,
+`Furthermore can a renovation beneficial be for the WOZ-value, when u for.instance have for your house to sell.`  
+> *A roof lasts a long time, but depending on the type of roof, the conditions,
 > the maintenance and the type of roof covering, it can sometimes be necessary to renovate the roof.
-> In addition, a renovation can be beneficial for the WOZ value if, for example, you have plans to sell your house.)*
+> In addition, a renovation can be beneficial for the WOZ value if, for example, you have plans to sell your house.*
 
 Nu kunnen we natuurlijk ruim van tevoren aan zien komen wanneer een dak echt aan een grondige vernieuwing toe is,
-*[Now can we natural large of in.advance at see come when a roof really at an thorough innovation be]*
+`Now can we of.course well.in.advance (ruim.van.tevoren) at see come when a roof really at an thorough innovation to be`
 en zullen we dit altijd bespreken na een gratis dakinspectie.
 Zo kunt u ook op financieel vlak de zaken goed inplannen.
 We adviseren echter om te zorgen dat u zoveel mogelijk zaken in één keer kunt laten doen.
 Dit scheelt op de totale kosten en bespaart bovendien de nodige tijd en overlast.
-> *(Of course, we can tell well in advance when a roof really needs a thorough renovation,
+> *Now we of course can come well in advance to see when the roof is really at a thorough innovation
 > and we will always discuss this after a free roof inspection.
 > This way, you can plan accordingly on a financial level as well.
 > However, we recommend making sure you can have as many things done at once as possible.
-> This saves on the overall cost and also saves the necessary time and inconvenience.)*
+> This saves on the overall cost and also saves the necessary time and inconvenience.`
 
 Wat kunnen jullie allemaal aanpakken bij een dakrenovatie?
 
