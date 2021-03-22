@@ -4,6 +4,7 @@ import yake
 
 from keybert import KeyBERT
 from flair.embeddings import TransformerDocumentEmbeddings
+from sentence_transformers import SentenceTransformer
 
 from nltk.corpus import stopwords
 
@@ -52,14 +53,23 @@ def keybert_impl(text, language='nl'):
     lang = languages[language]
 
     # bert = TransformerDocumentEmbeddings('henryk/bert-base-multilingual-cased-finetuned-dutch-squad2')
-    bert = TransformerDocumentEmbeddings('nlptown/bert-base-multilingual-uncased-sentiment')
-    model = KeyBERT(model=bert)
+    # bert = TransformerDocumentEmbeddings('nlptown/bert-base-multilingual-uncased-sentiment')
+    # model = KeyBERT(model=bert)
+
+    sentence_model = SentenceTransformer("distiluse-base-multilingual-cased-v1", device="cpu")
+    model = KeyBERT(model=sentence_model)
 
     stop_words = stopwords.words(lang)
 
-    keywords = model.extract_keywords(text, keyphrase_ngram_range=(1, 3), stop_words=stop_words, use_maxsum=False, nr_candidates=20, top_n=20)
+    keywords = model.extract_keywords(
+        text,
+        keyphrase_ngram_range=(1, 3),
+        stop_words=stop_words,
+        nr_candidates=20, top_n=20,
+        use_maxsum=True,
+        )
 
-    return keywords
+    return sorted(keywords, key=lambda k: k[1], reverse=True)
 
 
 def textrank_impl(text, language='nl'):

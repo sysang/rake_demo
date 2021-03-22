@@ -2,30 +2,34 @@ Dakrenovatie.
 
 
 Dakrenovatie, waarom u beter in één keer het hele dak kunt laten renoveren.  
-`Dakrenovatie, why u better in one time the whole roof can have renovate.`  
-> `Roof renovation, why it's better to have the entire roof renovated at once.*
+`Dakrenovatie, why you better in one turn the whole roof can let renovate.`  
+> `Roof renovation, why you can let renovating the whole roof better at once.  
 
 Een dak gaat lang mee, maar afhankelijk van het type dak, de omstandigheden,  
 `A roof go long with, but depending of the type roof, the circumstance`  
 het onderhoud en de soort dakbedekking kan het soms nodig zijn om het dak te renoveren.  
 `the maintenace and the kind covering can the sometimes necessary be for the roof to renovate.`  
-Daarnaast kan een renovatie gunstig zijn voor de WOZ-waarde, wanneer u bijvoorbeeld plannen heeft om uw huis te verkopen.  
-`Furthermore can a renovation beneficial be for the WOZ-value, when u for.instance have for your house to sell.`  
-> *A roof lasts a long time, but depending on the type of roof, the conditions,
-> the maintenance and the type of roof covering, it can sometimes be necessary to renovate the roof.
-> In addition, a renovation can be beneficial for the WOZ value if, for example, you have plans to sell your house.*
+Daarnaast kan een renovatie gunstig zijn voor de WOZ-waarde, wanneer you bijvoorbeeld plannen heeft om uw huis te verkopen.  
+`Furthermore can a renovation beneficial be for the WOZ-value, when u for.instance plan have about your house to sell.`  
+> *A roof lasts a long time, but depending on the type of roof, the conditions,  
+> the maintenance and the type of roof covering, it can sometimes be necessary to renovate the roof.  
+> Furthermore, a renovation can be beneficial for the WOZ value when you, for instance, have plans to sell your house.*  
 
-Nu kunnen we natuurlijk ruim van tevoren aan zien komen wanneer een dak echt aan een grondige vernieuwing toe is,
-`Now can we of.course well.in.advance (ruim.van.tevoren) at see come when a roof really at an thorough innovation to be`
-en zullen we dit altijd bespreken na een gratis dakinspectie.
-Zo kunt u ook op financieel vlak de zaken goed inplannen.
-We adviseren echter om te zorgen dat u zoveel mogelijk zaken in één keer kunt laten doen.
-Dit scheelt op de totale kosten en bespaart bovendien de nodige tijd en overlast.
-> *Now we of course can come well in advance to see when the roof is really at a thorough innovation
-> and we will always discuss this after a free roof inspection.
-> This way, you can plan accordingly on a financial level as well.
-> However, we recommend making sure you can have as many things done at once as possible.
-> This saves on the overall cost and also saves the necessary time and inconvenience.`
+Nu kunnen we natuurlijk ruim van tevoren aan zien komen wanneer een dak echt aan een grondige vernieuwing toe is,  
+`Now can we of.course well.in.advance (ruim.van.tevoren) at see come when a roof really at an thorough innovation to be`  
+en zullen we dit altijd bespreken na een gratis dakinspectie.  
+`and will we this always discuss after a free roof inspection `  
+Zo kunt u ook op financieel vlak de zaken goed inplannen.  
+`So can you also on financial level the things well plan`  
+We adviseren echter om te zorgen dat u zoveel mogelijk zaken in één keer kunt laten doen.  
+`We advise however about to care that you mutch possible things in one time can let do`  
+Dit scheelt op de totale kosten en bespaart bovendien de nodige tijd en overlast.  
+`This make.a.difference on the total costs and moreover the necessary time and inconvenience`  
+> *Now we of course can come well in advance to see when the roof is really at a thorough innovation  
+> and we will always discuss this after a free roof inspection.  
+> So you can also plan things well on financial level.  
+> However, we advise to sure that you can let doing many possible things at once.  
+> This makes a difference on the total costs and moreover the necessary time and inconvenience*  
 
 Wat kunnen jullie allemaal aanpakken bij een dakrenovatie?
 
