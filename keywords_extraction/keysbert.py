@@ -63,7 +63,7 @@ class KeySBERT:
             return []
 
     def filter_keyphrases(self, phrases):
-        regex = re.compile(r'\w+\s')
+        regex = re.compile(r'(\w|,)+\s')
 
         result = []
         for p in phrases:

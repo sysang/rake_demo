@@ -124,7 +124,7 @@ def noun_chunks(doclike: Union[Doc, Span]) -> Iterator[Span]:
         # Process sytax for NP with PP
         # if token is nominal modifier(nmod) and its left edge is preposition
         # then check if its head is obj
-        elif word.dep == nmod and (word.left_edge.dep in (case, det) or word.i == word.left_edge.i) and word.head.dep in (obj, nsubj, ROOT, conj):
+        elif word.dep == nmod and (word.left_edge.dep in (case, det) or word.i == word.left_edge.i) and word.head.dep in (obj, nsubj, conj):
             left_edge, right_edge, label = word.head.left_edge.i, word.i + 1, np_label
             print("   (NP2) {} <- {}".format(word, word.head.left_edge.i))
 
@@ -134,7 +134,7 @@ def noun_chunks(doclike: Union[Doc, Span]) -> Iterator[Span]:
         elif word.dep == obl:
             if word.head.dep == ccomp:
                 left_edge, right_edge, label = word.head.left_edge.i, word.i + 1, np_label
-                print("   (NP3) {}".format(word))
+                print("   (NP3) {} <- {}".format(word, word.head.left_edge.i))
             else:
                 left_edge, right_edge, label = word.left_edge.i, word.i + 1, np_label
                 print("   (NP4) {}".format(word))
