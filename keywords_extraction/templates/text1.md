@@ -8,9 +8,9 @@ Dakrenovatie, waarom u beter in één keer het hele dak kunt laten renoveren.
 Een dak gaat lang mee, maar afhankelijk van het type dak, de omstandigheden,  
 `A roof go long with, but depending of the type roof, the circumstance`  
 het onderhoud en de soort dakbedekking kan het soms nodig zijn om het dak te renoveren.  
-`the maintenace and the kind covering can the sometimes necessary be for the roof to renovate.`  
+`the maintenace and the kind covering can it sometimes necessary be for the roof to renovate.`  
 Daarnaast kan een renovatie gunstig zijn voor de WOZ-waarde, wanneer you bijvoorbeeld plannen heeft om uw huis te verkopen.  
-`Furthermore can a renovation beneficial be for the WOZ-value, when u for.instance plan have about your house to sell.`  
+`Furthermore can a renovation beneficial be for the WOZ-value, when u for.instance plans have about your house to sell.`  
 > *A roof lasts a long time, but depending on the type of roof, the conditions,  
 > the maintenance and the type of roof covering, it can sometimes be necessary to renovate the roof.  
 > Furthermore, a renovation can be beneficial for the WOZ value when you, for instance, have plans to sell your house.*  

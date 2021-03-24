@@ -3,13 +3,13 @@ import re
 
 from rake_nltk import Rake
 
-from keybert import KeyBERT
-from sentence_transformers import SentenceTransformer
-
 from nltk.corpus import stopwords
 
 import spacy
 import pytextrank
+
+from .keysbert import KeySBERT
+from .utils import PREPOSITIONS_ARTICLES
 
 
 def rake_impl(text, language='nl'):
@@ -51,63 +51,48 @@ def yake_impl(text, language='nl'):
 
 
 def keybert_impl(text, language='nl'):
-    languages = {'en': 'english', 'nl': 'dutch'}
-    lang = languages[language]
-    nr_candidates = 20
-    top_n = 10
+    # languages = {'en': 'english', 'nl': 'dutch'}
+    # lang = languages[language]
+    top_n = 20
 
-    # bert = TransformerDocumentEmbeddings('henryk/bert-base-multilingual-cased-finetuned-dutch-squad2')
-    # bert = TransformerDocumentEmbeddings('nlptown/bert-base-multilingual-uncased-sentiment')
-    # model = KeyBERT(model=bert)
+    model = KeySBERT("distiluse-base-multilingual-cased-v1")
 
-    sentence_model = SentenceTransformer("distiluse-base-multilingual-cased-v1", device="cpu")
-    model = KeyBERT(model=sentence_model)
+    keywords = model.extract_keyphrases(text, top_n,)
 
-    stop_words = stopwords.words(lang)
-
-    keywords = model.extract_keywords(
-        text,
-        keyphrase_ngram_range=(1, 3),
-        stop_words=stop_words,
-        nr_candidates=nr_candidates, top_n=top_n,
-        use_maxsum=True,
-        )
-
-    return sorted(keywords, key=lambda k: k[1], reverse=True)
+    return keywords
 
 
 def textrank_impl(text, language='nl'):
     # load a spaCy model, depending on language, scale, etc.
     nlp = spacy.load("nl_core_news_md")
 
-    top_n = 15
+    top_n = 150
 
     # add PyTextRank to the spaCy pipeline
     nlp.add_pipe("textrank", last=True)
     doc = nlp(text)
 
-    prepositions_articles = [
-            "ann", "achter", "beneden", "bij", "binnen", "boven", "buiten", "door", "in",
-            "langs", "met", "na", "naar", "naast", "om", "onder", "op", "over", "rond", "sinds",
-            "te", "tegen", "tegenover", "got", "tussen", "uit", "van", "voor", "zonder",
-            "een", "de", "het"
-            ]
-
-    regex = re.compile(r'\w+\s')
+    regex = re.compile(r'(\w|,)+\s')
 
     keywords = []
     cache = []
     ind = 1
     for p in doc._.phrases:
         k = p.text.lower()
+
         s = regex.match(k)
         if s:
-            matched = s.group(0)
-            matched = matched.strip()
+            matched = s.group(0).strip()
 
-            if matched in prepositions_articles:
+            while matched in PREPOSITIONS_ARTICLES:
                 span = s.span(0)
                 k = k[span[1]:]
+
+                s = regex.match(k)
+                if s:
+                    matched = s.group(0).strip()
+                else:
+                    matched = None
 
         if k not in cache:
             cache.append(k)
