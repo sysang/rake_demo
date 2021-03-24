@@ -53,11 +53,11 @@ def yake_impl(text, language='nl'):
 def keybert_impl(text, language='nl'):
     # languages = {'en': 'english', 'nl': 'dutch'}
     # lang = languages[language]
-    top_n = 20
+    top_n = 15
 
     model = KeySBERT("distiluse-base-multilingual-cased-v1")
 
-    keywords = model.extract_keyphrases(text, top_n,)
+    keywords = model.extract_keyphrases(text, top_n)
 
     return keywords
 
@@ -66,7 +66,7 @@ def textrank_impl(text, language='nl'):
     # load a spaCy model, depending on language, scale, etc.
     nlp = spacy.load("nl_core_news_md")
 
-    top_n = 150
+    top_n = 15
 
     # add PyTextRank to the spaCy pipeline
     nlp.add_pipe("textrank", last=True)

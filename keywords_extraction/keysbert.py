@@ -41,8 +41,7 @@ class KeySBERT:
     def extract_keyphrases(
             self,
             docs: Union[str, List[str]],
-            top_n: int = 5,
-            nr_candidates: int = 20) -> Union[List[Tuple[str, float]], List[List[Tuple[str, float]]]]:
+            top_n: int = 10) -> Union[List[Tuple[str, float]], List[List[Tuple[str, float]]]]:
 
         try:
             nlp = spacy.load("nl_core_news_md")
