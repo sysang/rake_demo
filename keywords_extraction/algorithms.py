@@ -19,7 +19,7 @@ def rake_impl(text, language='nl'):
 
     top_n = 5
 
-    r = Rake(language=languages[language], min_length=1, max_length=3, stopwords=stop_words)
+    r = Rake(language=languages[language], min_length=1, max_length=2, stopwords=stop_words)
     r.extract_keywords_from_text(text)
     keywords = r.get_ranked_phrases_with_scores()
 
@@ -31,7 +31,7 @@ def rake_impl(text, language='nl'):
 
 
 def yake_impl(text, language='nl'):
-    max_ngram_size = 3
+    max_ngram_size = 2
     deduplication_thresold = 0.9
     deduplication_algo = 'seqm'
     windowSize = 1
