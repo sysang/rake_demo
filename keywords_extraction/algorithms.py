@@ -53,7 +53,7 @@ def yake_impl(text, language='nl'):
 def keybert_impl(text, language='nl'):
     # languages = {'en': 'english', 'nl': 'dutch'}
     # lang = languages[language]
-    top_n = 15
+    top_n = 20
 
     model = KeySBERT("distiluse-base-multilingual-cased-v1")
 
