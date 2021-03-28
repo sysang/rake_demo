@@ -1,7 +1,7 @@
 ## [Memory error when installing pytorch](https://discuss.pytorch.org/t/memory-error-when-installing-pytorch/8027/6)
 
     # create swap file of 512 MB
-    dd if=/dev/zero of=/swapfile bs=1024 count=524288
+    dd if=/dev/zero of=/swapfile bs=1024 count=2097152
     # modify permissions
     chown root:root /swapfile
     chmod 0600 /swapfile
