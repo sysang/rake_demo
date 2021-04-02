@@ -1,30 +1,35 @@
-## [Memory error when installing pytorch](https://discuss.pytorch.org/t/memory-error-when-installing-pytorch/8027/6)
+## Memory error when installing pytorch
 
-    # create swap file of 512 MB
-    dd if=/dev/zero of=/swapfile bs=1024 count=2097152
-    # modify permissions
-    chown root:root /swapfile
-    chmod 0600 /swapfile
-    # setup swap area
+    # https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-18-04
+    # Step 1 – Checking the System for Swap Information
+    swapon --show
+    free -h
+    # Step 2 – Checking Available Space on the Hard Drive Partition
+    df -h
+    # Step 3 – Creating a Swap File
+    fallocate -l 2G /swapfile
+    # Step 4 – Enabling the Swap File
+    chmod 600 /swapfile
+    ls -lh /swapfile
     mkswap /swapfile
-    # turn swap on
     swapon /swapfile
-    # vi /etc/fstab
-    /swapfile   swap    swap    sw  0   0
+    # Step 5 – Making the Swap File Permanent
+    cp /etc/fstab /etc/fstab.bak
+    echo '/swapfile none swap sw 0 0' | tee -a /etc/fstab
+    # Step 6 – Tuning your Swap Settings
+    nano /etc/sysctl.conf
+    vm.swappiness=15
+    vm.vfs_cache_pressure=50
 
 ## Performance optimization for vm
 
-- https://askubuntu.com/questions/259739/kswapd0-is-taking-a-lot-of-cpu  
-- https://serverfault.com/questions/696156/kswapd-often-uses-100-cpu-when-swap-is-in-use/696185#696185  
-- Edit /etc/default/grub and add the following kernel parameters to the GRUB_CMDLINE_LINUX_DEFAULT line  
-> elevator=noop - https://lonesysadmin.net/2013/12/06/use-elevator-noop-for-linux-virtual-machines/  
-> zswap.enabled=1 - https://www.addictivetips.com/ubuntu-linux-tips/enable-zswap-on-linux/  
-> transparent_hugepage=madvise - https://www.golinuxcloud.com/check-transparent-hugepage-status-rhel-centos/  
+    # https://serverfault.com/questions/696156/kswapd-often-uses-100-cpu-when-swap-is-in-use
+    # Edit /etc/default/grub and add the following kernel parameters to the GRUB_CMDLINE_LINUX_DEFAULT line:
+    elevator=noop - https://lonesysadmin.net/2013/12/06/use-elevator-noop-for-linux-virtual-machines/  
+    zswap.enabled=1 - https://www.addictivetips.com/ubuntu-linux-tips/enable-zswap-on-linux/  
+    transparent_hugepage=madvise - https://www.golinuxcloud.com/check-transparent-hugepage-status-rhel-centos/  
 
-- update-grub2  
-- Edit /etc/sysctl.conf and append the following:  
-> vm.swappiness=25  
-> vm.vfs_cache_pressure=50 # safer than periodically dropping caches  
+    # update-grub2  
 
 ## Package Dependencies
 
