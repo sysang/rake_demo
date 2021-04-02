@@ -9,6 +9,22 @@
     mkswap /swapfile
     # turn swap on
     swapon /swapfile
+    # vi /etc/fstab
+    /swapfile   swap    swap    sw  0   0
+
+## Performance optimization for vm
+
+- https://askubuntu.com/questions/259739/kswapd0-is-taking-a-lot-of-cpu  
+- https://serverfault.com/questions/696156/kswapd-often-uses-100-cpu-when-swap-is-in-use/696185#696185  
+- Edit /etc/default/grub and add the following kernel parameters to the GRUB_CMDLINE_LINUX_DEFAULT line  
+> elevator=noop - https://lonesysadmin.net/2013/12/06/use-elevator-noop-for-linux-virtual-machines/  
+> zswap.enabled=1 - https://www.addictivetips.com/ubuntu-linux-tips/enable-zswap-on-linux/  
+> transparent_hugepage=madvise - https://www.golinuxcloud.com/check-transparent-hugepage-status-rhel-centos/  
+
+- update-grub2  
+- Edit /etc/sysctl.conf and append the following:  
+> vm.swappiness=25  
+> vm.vfs_cache_pressure=50 # safer than periodically dropping caches  
 
 ## Package Dependencies
 
